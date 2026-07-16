@@ -249,6 +249,21 @@
     border:1px dashed transparent;
   }
   .partner-slot span{opacity:0.5;}
+  .partner-slot.has-logo{
+    background:#f1ede4;
+    padding:22px;
+  }
+  .partner-slot.has-logo img{
+    max-width:100%; max-height:100%;
+    width:auto; height:auto;
+    object-fit:contain;
+    filter:saturate(0.9);
+    transition:filter .3s ease, transform .3s ease;
+  }
+  .partner-slot.has-logo:hover img{
+    filter:saturate(1);
+    transform:scale(1.03);
+  }
   .partners-note{margin-top:24px; font-size:13px; color:var(--text-muted); font-style:italic;}
 
   /* ---------- CONTACT ---------- */
