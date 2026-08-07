@@ -41,3 +41,21 @@ document.getElementById('year').textContent = new Date().getFullYear();
     });
   }, { rootMargin: '-45% 0px -50% 0px' });
   sections.forEach(s => spy.observe(s));
+
+  // reel carousel navigation
+  const reelTrack = document.getElementById('reelTrack');
+  if (reelTrack) {
+    const prevBtn = document.querySelector('.reel-prev');
+    const nextBtn = document.querySelector('.reel-next');
+    const scrollAmount = () => reelTrack.querySelector('.reel-card').offsetWidth + 20;
+    prevBtn.addEventListener('click', () => reelTrack.scrollBy({ left: -scrollAmount(), behavior: 'smooth' }));
+    nextBtn.addEventListener('click', () => reelTrack.scrollBy({ left: scrollAmount(), behavior: 'smooth' }));
+
+    // pause other videos when one plays
+    const videos = reelTrack.querySelectorAll('video');
+    videos.forEach(v => {
+      v.addEventListener('play', () => {
+        videos.forEach(other => { if (other !== v) other.pause(); });
+      });
+    });
+  }
